@@ -1,0 +1,127 @@
+:root {
+  --black-color: #141414;
+  --white-color: #fff;
+  --top-number: "3";
+}
+
+@font-face {
+  font-family: 'Jost';
+  src: url('/assets/fonts/Jost-VariableFont.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%
+}
+
+body {
+  background-color: var(--black-color);
+  color: var(--white-color);
+  font-family: 'Jost';
+  font-size: 1.6rem;
+  overflow-x: hidden;
+  width: 100dvw;
+}
+
+header {
+  align-items: center;
+  background-color: var(--black-color);
+  display: flex;
+  justify-content: space-between;
+  left: 0;
+  padding: 16px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+
+  .header-logo, .header-buttons {
+    align-items: center;
+    display: flex;
+    gap: 24px;
+  }
+  .header-buttons > div {
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 8px;
+
+    &:hover {
+      background-color: var(--white-color);
+      color: var(--black-color);
+    }
+  }
+  .platform-title {
+    display: none;
+  }
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  padding: 200px 16px;
+  overflow-y: auto;
+
+  .section-title {
+    font-size: 2.4rem;
+    margin: 24px 0 8px 0;
+
+    #top-text {
+      &::after{
+        content: var(--top-number);
+        font-weight: bold;
+      }
+    }
+  }
+  
+  .top {
+    --item-min-width: 225px
+  }
+  section:not(.top) {
+    --item-min-width: 250px
+  }
+  section {
+    display: flex;
+    flex-wrap: wrap;
+    
+    .top-item:nth-child(n+4){
+      display: none;
+    }
+    
+    .item, .top-item {
+      flex: 1 0 var(--item-min-width);    
+      cursor: pointer;
+      transition-duration: 200ms;
+      
+
+      img {
+        object-fit: cover;
+        object-position: center;
+        width: 100%;
+      }
+      
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+
+@media (width >= 1200px) {
+  :root {
+    --top-number: "5";
+  }
+  header .platform-title {
+    display: inline;
+    font-size: 3.2rem;
+  }
+  .top .top-item:nth-child(n+4){
+    display: block;
+  }
+}
